@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond Multnomah — USA — IN RUINS</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E8E0C9;color:#1a1a1a;font-family:Georgia,"Times New Roman",Times,serif}
+  a{color:inherit;text-decoration:none}
+  
+  /* HEADER */
+  header{
+    max-width:1100px;
+    margin:0 auto;
+    padding:24px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(0,0,0,.15);
+  }
+  header .logo{
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:.08em;
+  }
+  header nav{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  header nav a{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-left:24px;
+    opacity:.6;
+  }
+  header nav a:hover{opacity:1}
+
+  /* MAIN LAYOUT CONTAINER */
+  .article-container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 30px 20px 80px;
+  }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    text-align: center;
+    border-bottom: 1px dashed rgba(26,26,26,0.4);
+    padding-bottom: 24px;
+    margin-bottom: 30px;
+  }
+  .kicker{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:#6b5d48;
+    margin-bottom: 8px;
+  }
+  .article-header h1 {
+    font-size: clamp(34px, 6vw, 56px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .article-header .subhead {
+    font-size: 18px;
+    font-style: italic;
+    opacity: 0.85;
+    margin-bottom: 16px;
+  }
+  .article-meta {
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 8px;
+    display: inline-block;
+  }
+
+  /* ARTICLE BODY PROSE */
+  .article-body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #222;
+  }
+  .article-body p {
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+  
+  /* FIRST PARAGRAPH DROP CAP */
+  .article-body > p:first-of-type::first-letter {
+    font-size: 52px;
+    float: left;
+    line-height: 0.8;
+    padding-right: 8px;
+    padding-top: 4px;
+    font-weight: bold;
+  }
+
+  /* IMAGE STYLES & FLOATS */
+  figure {
+    margin: 20px 0;
+  }
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #1a1a1a;
+  }
+  figcaption {
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 9.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-top: 6px;
+  }
+
+  /* FULL WIDTH HERO PHOTO */
+  figure.hero-img {
+    margin: 0 0 30px 0;
+  }
+
+  /* FLOATING IMAGES FOR DESKTOP (Text wraps around them) */
+  @media(min-width: 650px) {
+    figure.float-left {
+      width: 48%;
+      float: left;
+      margin: 6px 24px 16px 0;
+    }
+    figure.float-right {
+      width: 48%;
+      float: right;
+      margin: 6px 0 16px 24px;
+    }
+  }
+
+  /* TWO-COLUMN PHOTO GALLERY GRID */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 30px 0;
+  }
+  .photo-grid figure {
+    margin: 0;
+  }
+
+  /* CLEARFIX FOR FLOATS */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  footer{
+    max-width:1100px;
+    margin:0 auto;
+    padding:20px;
+    border-top:4px double #1a1a1a;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    opacity:.6;
+  }
+
+  @media(max-width:600px){
+    header{flex-direction:column;gap:12px; text-align: center;}
+    header nav a { margin: 0 10px; display: inline-block; }
+    .photo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../../index.html" class="logo">IN RUINS</a>
+  <nav>
+    <a href="../../travel.html">Travel</a>
+    <a href="../../history.html">History</a>
+    <a href="../../photographs.html">Photos</a>
+    <a href="../../fieldnotes.html">Field Notes</a>
+  </nav>
+</header>
+
+<main class="article-container">
+
+  <article>
+    <!-- ARTICLE TITLE AREA -->
+    <header class="article-header">
+      <div class="kicker">Dispatch — Columbia River Gorge</div>
+      <h1>Beyond Multnomah</h1>
+      <div class="subhead">Leaving the crowds behind on the higher trails of the Gorge</div>
+      <div class="article-meta">USA / Field Notes / Vol. I</div>
+    </header>
+
+    <!-- PHOTO 1: MAIN HERO -->
+    <figure class="hero-img">
+      <a href="bhndm_res.webp"><img src="bhndm_res.webp" alt="Walk behind Multnomah"></a>
+      <figcaption>Fig. 01 — Trailhead view looking toward the mist</figcaption>
+    </figure>
+
+    <div class="article-body clearfix">
+      
+      <p>Your draft text will start here. The first letter will automatically feature a vintage drop-cap style. You can write several sentences here describing the journey, setting the mood, and leading into the first section of the hike.</p>
+      
+      <p>As you build up the prose, the text will flow smoothly down the page. Having a structured layout allows you to focus purely on formatting now and drop in text seamlessly later.</p>
+
+      <!-- PHOTO 2: FLOATING RIGHT -->
+      <figure class="float-right">
+        <a href="photo2.webp"><img src="bhndm_res.webp" alt="Trail Section"></a>
+        <figcaption>Fig. 02 — Higher switchbacks above the lower deck</figcaption>
+      </figure>
+
+      <p>This paragraph demonstrates how text wraps around a floating image on the right. When you write long paragraphs, the text automatically hugs the photo frame, mimicking classic vintage magazine and newspaper layouts.</p>
+
+      <p>You can add more detail about the trail name, the conditions, or sound of the water. Additional context can fill this space naturally.</p>
+
+      <!-- PHOTO 3: FLOATING LEFT -->
+      <figure class="float-left">
+        <a href="photo3.webp"><img src="bhndm_res.webp" alt="Creek View"></a>
+        <figcaption>Fig. 03 — Crossing the upper wooden footbridge</figcaption>
+      </figure>
+
+      <p>Here is another paragraph wrapping around a left-aligned image. Alternating images between left and right keeps the reading rhythm dynamic while keeping all 7 photos well-spaced throughout the draft.</p>
+
+      <p>More draft copy goes here to balance out the height of the left image.</p>
+
+      <!-- PHOTO 4 & 5: SIDE-BY-SIDE GALLERY -->
+      <div class="photo-grid">
+        <figure>
+          <a href="photo4.webp"><img src="bhndm_res.webp" alt="Detail 1"></a>
+          <figcaption>Fig. 04 — Moss detail along the rock wall</figcaption>
+        </figure>
+        <figure>
+          <a href="photo5.webp"><img src="bhndm_res.webp" alt="Detail 2"></a>
+          <figcaption>Fig. 05 — Sun breaking through canopy</figcaption>
+        </figure>
+      </div>
+
+      <p>Using a side-by-side grid is great for displaying detail shots, equipment, or surrounding scenery without overwhelming the height of the text.</p>
+
+      <!-- PHOTO 6: FLOATING RIGHT -->
+      <figure class="float-right">
+        <a href="photo6.webp"><img src="bhndm_res.webp" alt="Overlook"></a>
+        <figcaption>Fig. 06 — Looking back down toward the river</figcaption>
+      </figure>
+
+      <p>Penultimate section of your story. As you refine your prose, you can add final reflections on the hike, notes on wildlife, or trail advice.</p>
+
+      <!-- PHOTO 7: CLOSING HERO -->
+      <figure class="hero-img" style="margin-top: 30px;">
+        <a href="photo7.webp"><img src="bhndm_res.webp" alt="Final View"></a>
+        <figcaption>Fig. 07 — The bench at the trail's end</figcaption>
+      </figure>
+
+      <p>Concluding thoughts for the article go here, wrapping up the dispatch cleanly before the footer.</p>
+
+    </div>
+  </article>
+
+</main>
+
+<footer>IN RUINS — USA</footer>
+
+</body>
+</html>
