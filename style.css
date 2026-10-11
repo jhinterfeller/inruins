@@ -344,7 +344,7 @@ body.museum-body {
 .plane-bg {
   z-index: 1;
   transform: scale(0.88);
-  opacity: 0.85;
+  opacity: 0.85;text-align: center;
 }
 .plane-bg .exhibit-frame img {
   height: 150px;
