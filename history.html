@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>History — The Overgrown Trail</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="museum-body">
 
   <header class="site-header">
     <nav class="nav">
@@ -22,360 +22,309 @@
     </nav>
   </header>
 
-  <section class="page-hero">
+  <section class="page-hero museum-hero">
     <div class="wrap">
       <div class="kicker">02 / History Gallery</div>
       <h1>Museum of the Unwritten</h1>
-      <p>Explore the halls level by level. Select an alcove to step closer.</p>
+      <p>Look past the foreground pillars into the deep halls.</p>
     </div>
   </section>
 
-  <main class="museum-wings">
+  <!-- ==========================================
+       MUSEUM HALL / SKYSCRAPER FLOORS
+  =========================================== -->
+  <main class="museum-hall">
 
-    <!-- ==========================================
-         FLOOR 01: KHMER EMPIRE & ANCIENT RUINS
-    =========================================== -->
+    <!-- FLOOR 01: KHMER EMPIRE -->
     <section class="museum-floor">
-      <div class="floor-header">
-        <span class="floor-tag">WING I · FLOOR 01</span>
-        <h2>The Khmer Frontier</h2>
+      <!-- Architectural Ceiling Lintel -->
+      <div class="hall-ceiling">
+        <div class="floor-title-plate">
+          <span class="floor-num">HALL I</span>
+          <h2>The Khmer Frontier</h2>
+        </div>
       </div>
 
-      <div class="gallery-perspective-grid">
+      <!-- 5-Column Room Perspective Grid -->
+      <div class="gallery-room">
         
-        <!-- 1. Foreground Left (Plane 1) -->
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">01.1</span>
+        <!-- Pillar Left (Foreground Plane) -->
+        <article class="exhibit plane-fg col-left">
+          <div class="plaque-no">01.1</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Phnom Rung ruin">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Phnom Rung</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Phnom Rung ruin detail">
-          </div>
-          <div class="exhibit-body">
-            <p>The sandstone lintels facing west towards the ancient highways.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
+            <p>Sandstone lintels facing west towards the ancient highways.</p>
           </div>
         </article>
 
-        <!-- 2. Background Left (Plane 3 - Deep Vista) -->
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">01.2</span>
+        <!-- Deep Recess Left (Background Plane) -->
+        <article class="exhibit plane-bg col-inner-left">
+          <div class="plaque-no">01.2</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Phnom Banan">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Phnom Banan</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Phnom Banan towers">
-          </div>
-          <div class="exhibit-body">
-            <p>Five towers standing above the winding river in Battambang.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+            <p>Five towers above the river.</p>
           </div>
         </article>
 
-        <!-- 3. Midground Center (Plane 2 - Focal Center) -->
-        <article class="exhibit plane-mg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">01.3</span>
+        <!-- Central Wall (Midground Plane) -->
+        <article class="exhibit plane-mg col-center">
+          <div class="plaque-no">01.3</div>
+          <a href="travel.html" class="exhibit-frame central-frame">
+            <img src="zzsgate_result.webp" alt="Central Sanctuary">
+          </a>
+          <div class="exhibit-plaque">
             <h3>The Central Sanctuary</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Central Khmer Monument">
-          </div>
-          <div class="exhibit-body">
             <p>Monolithic stone gates marking forgotten boundaries between forest and king.</p>
-            <a class="exhibit-link" href="#">Explore Main Collection &rarr;</a>
           </div>
         </article>
 
-        <!-- 4. Background Right (Plane 3 - Deep Vista) -->
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">01.4</span>
+        <!-- Deep Recess Right (Background Plane) -->
+        <article class="exhibit plane-bg col-inner-right">
+          <div class="plaque-no">01.4</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Prasat Muang Tam">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Prasat Muang Tam</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Muang Tam water reservoirs">
-          </div>
-          <div class="exhibit-body">
-            <p>Nagas resting at water level inside quiet courtyards.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+            <p>Nagas at water level.</p>
           </div>
         </article>
 
-        <!-- 5. Foreground Right (Plane 1) -->
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">01.5</span>
+        <!-- Pillar Right (Foreground Plane) -->
+        <article class="exhibit plane-fg col-right">
+          <div class="plaque-no">01.5</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Khmer Field Notes">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Khmer Field Notes</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Khmer stone carvings detail">
-          </div>
-          <div class="exhibit-body">
             <p>Inscriptions, pottery fragments, and unmapped tracks along the border.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
           </div>
         </article>
 
       </div>
+
+      <!-- Architectural Floor Lintel -->
+      <div class="hall-floor-beam"></div>
     </section>
 
-    <!-- ==========================================
-         FLOOR 02: KINGDOMS OF THAILAND
-    =========================================== -->
+    <!-- FLOOR 02: KINGDOMS OF THAILAND -->
     <section class="museum-floor">
-      <div class="floor-header">
-        <span class="floor-tag">WING II · FLOOR 02</span>
-        <h2>Siam &amp; The Early Kingdoms</h2>
+      <div class="hall-ceiling">
+        <div class="floor-title-plate">
+          <span class="floor-num">HALL II</span>
+          <h2>Kingdoms of Siam</h2>
+        </div>
       </div>
 
-      <div class="gallery-perspective-grid">
+      <div class="gallery-room">
         
-        <!-- 1. Foreground Left -->
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">02.1</span>
+        <article class="exhibit plane-fg col-left">
+          <div class="plaque-no">02.1</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Dvaravati">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Dvaravati</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Dvaravati wheels of law">
-          </div>
-          <div class="exhibit-body">
-            <p>Terracotta relics and ancient moated cities across the central plains.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
+            <p>Terracotta relics and ancient moated cities across central plains.</p>
           </div>
         </article>
 
-        <!-- 2. Background Left -->
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">02.2</span>
+        <article class="exhibit plane-bg col-inner-left">
+          <div class="plaque-no">02.2</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Si Thep">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Si Thep</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Si Thep ancient stupa">
-          </div>
-          <div class="exhibit-body">
-            <p>Complex crossroads where Dvaravati meets early Khmer influence.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+            <p>Ancient stupa crossroads.</p>
           </div>
         </article>
 
-        <!-- 3. Midground Center -->
-        <article class="exhibit plane-mg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">02.3</span>
+        <article class="exhibit plane-mg col-center">
+          <div class="plaque-no">02.3</div>
+          <a href="travel.html" class="exhibit-frame central-frame">
+            <img src="zzsgate_result.webp" alt="Sukhothai">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Sukhothai</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Sukhothai standing Buddha">
-          </div>
-          <div class="exhibit-body">
-            <p>The dawn of Thai architecture, lotus bud stupas, and reflective ponds.</p>
-            <a class="exhibit-link" href="#">Explore Main Collection &rarr;</a>
+            <p>Lotus bud stupas, standing Buddhas, and reflective waters.</p>
           </div>
         </article>
 
-        <!-- 4. Background Right -->
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">02.4</span>
+        <article class="exhibit plane-bg col-inner-right">
+          <div class="plaque-no">02.4</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Kamphaeng Phet">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Kamphaeng Phet</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Kamphaeng Phet ruins">
-          </div>
-          <div class="exhibit-body">
-            <p>Heavy walls and forest temples carved out of dense, dark stone.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+            <p>Forest temples in stone.</p>
           </div>
         </article>
 
-        <!-- 5. Foreground Right -->
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">02.5</span>
+        <article class="exhibit plane-fg col-right">
+          <div class="plaque-no">02.5</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Ayutthaya">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Ayutthaya</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Ayutthaya brick towers">
-          </div>
-          <div class="exhibit-body">
-            <p>Soaring brick prangs and river defenses along the Chao Phraya.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
+            <p>Brick towers and river defenses along the Chao Phraya.</p>
           </div>
         </article>
 
       </div>
+
+      <div class="hall-floor-beam"></div>
     </section>
 
-    <!-- ==========================================
-         FLOOR 03: CHINA & THE NORTHERN FRONTIER
-    =========================================== -->
+    <!-- FLOOR 03: CHINA & GREAT WALL -->
     <section class="museum-floor">
-      <div class="floor-header">
-        <span class="floor-tag">WING III · FLOOR 03</span>
-        <h2>China &amp; The Great Wall Passes</h2>
+      <div class="hall-ceiling">
+        <div class="floor-title-plate">
+          <span class="floor-num">HALL III</span>
+          <h2>China &amp; The Great Wall Passes</h2>
+        </div>
       </div>
 
-      <div class="gallery-perspective-grid">
+      <div class="gallery-room">
         
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">03.1</span>
+        <article class="exhibit plane-fg col-left">
+          <div class="plaque-no">03.1</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Zhuizi Shan">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Zhuizi Shan</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Zhuizi Shan wild wall">
-          </div>
-          <div class="exhibit-body">
-            <p>Wild, un-restored stone ridges stretching into northern peaks.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
+            <p>Wild, un-restored stone ridges reaching into northern peaks.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">03.2</span>
+        <article class="exhibit plane-bg col-inner-left">
+          <div class="plaque-no">03.2</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Xingcheng">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Xingcheng</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Xingcheng ming city walls">
-          </div>
-          <div class="exhibit-body">
-            <p>Intact Ming Dynasty city walls guarding the Liaoning coast.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+            <p>Ming coastal walls.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-mg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">03.3</span>
+        <article class="exhibit plane-mg col-center">
+          <div class="plaque-no">03.3</div>
+          <a href="travel.html" class="exhibit-frame central-frame">
+            <img src="zzsgate_result.webp" alt="Shenyang">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Shenyang Palace</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Shenyang Mukden palace">
-          </div>
-          <div class="exhibit-body">
-            <p>Early Qing architecture and imperial halls of power.</p>
-            <a class="exhibit-link" href="#">Explore Main Collection &rarr;</a>
+            <p>Early Qing imperial architecture and frontier history.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">03.4</span>
+        <article class="exhibit plane-bg col-inner-right">
+          <div class="plaque-no">03.4</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Jiumenkou">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Jiumenkou</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Jiumenkou water wall">
-          </div>
-          <div class="exhibit-body">
-            <p>The unique section of the Great Wall built directly over water.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+            <p>Great Wall over water.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">03.5</span>
-            <h3>Liaoning Archives</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Northeast frontier notes">
-          </div>
-          <div class="exhibit-body">
-            <p>Frontier posts, beacon towers, and harsh winters along the border.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
+        <article class="exhibit plane-fg col-right">
+          <div class="plaque-no">03.5</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Frontier Dispatches">
+          </a>
+          <div class="exhibit-plaque">
+            <h3>Liaoning Frontier</h3>
+            <p>Beacon towers and bitter winters along the northern boundary.</p>
           </div>
         </article>
 
       </div>
+
+      <div class="hall-floor-beam"></div>
     </section>
 
-    <!-- ==========================================
-         FLOOR 04: MESOAMERICA
-    =========================================== -->
+    <!-- FLOOR 04: MESOAMERICA -->
     <section class="museum-floor">
-      <div class="floor-header">
-        <span class="floor-tag">WING IV · FLOOR 04</span>
-        <h2>Mesoamerica: Maya &amp; Aztec</h2>
+      <div class="hall-ceiling">
+        <div class="floor-title-plate">
+          <span class="floor-num">HALL IV</span>
+          <h2>Mesoamerica: Maya &amp; Aztec</h2>
+        </div>
       </div>
 
-      <div class="gallery-perspective-grid">
+      <div class="gallery-room">
         
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">04.1</span>
+        <article class="exhibit plane-fg col-left">
+          <div class="plaque-no">04.1</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Yaxunah">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Yaxunah</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Yaxunah pyramid in jungle">
-          </div>
-          <div class="exhibit-body">
-            <p>Overgrown pyramids deep in the Yucatán forests away from tourists.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
+            <p>Overgrown pyramids deep in the Yucatán forests.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">04.2</span>
+        <article class="exhibit plane-bg col-inner-left">
+          <div class="plaque-no">04.2</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Maya Sacbeob">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Maya Sacbeob</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Ancient white stone road">
-          </div>
-          <div class="exhibit-body">
-            <p>White causeways connecting distant ritual centers.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+            <p>White causeways in jungle.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-mg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">04.3</span>
+        <article class="exhibit plane-mg col-center">
+          <div class="plaque-no">04.3</div>
+          <a href="travel.html" class="exhibit-frame central-frame">
+            <img src="zzsgate_result.webp" alt="Valley of Mexico">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Valley of Mexico</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Aztec stonework">
-          </div>
-          <div class="exhibit-body">
-            <p>Monuments of the Mexica empire and volcanic stone carvings.</p>
-            <a class="exhibit-link" href="#">Explore Main Collection &rarr;</a>
+            <p>Mexica monuments and volcanic stone carvings.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-bg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">04.4</span>
-            <h3>Puuc Style Architecture</h3>
-          </div>
-          <div class="exhibit-frame focus-frame">
-            <img src="zzsgate_result.webp" alt="Detailed geometric stonework">
-          </div>
-          <div class="exhibit-body">
-            <p>Intricate stone mosaics and masks of Chaac on facade walls.</p>
-            <a class="exhibit-link" href="#">Inspect Archive &rarr;</a>
+        <article class="exhibit plane-bg col-inner-right">
+          <div class="plaque-no">04.4</div>
+          <a href="travel.html" class="exhibit-frame spotlight-frame">
+            <img src="zzsgate_result.webp" alt="Puuc Style">
+          </a>
+          <div class="exhibit-plaque">
+            <h3>Puuc Architecture</h3>
+            <p>Stone masks of Chaac.</p>
           </div>
         </article>
 
-        <article class="exhibit plane-fg">
-          <div class="exhibit-header">
-            <span class="exhibit-no">04.5</span>
+        <article class="exhibit plane-fg col-right">
+          <div class="plaque-no">04.5</div>
+          <a href="travel.html" class="exhibit-frame">
+            <img src="zzsgate_result.webp" alt="Highland Trails">
+          </a>
+          <div class="exhibit-plaque">
             <h3>Highland Trails</h3>
-          </div>
-          <div class="exhibit-frame">
-            <img src="zzsgate_result.webp" alt="Mexican highlands trails">
-          </div>
-          <div class="exhibit-body">
-            <p>Riding and walking through ancient routes of Central Mexico.</p>
-            <a class="exhibit-link" href="#">Enter Wing &rarr;</a>
+            <p>Riding and walking through ancient mountain routes.</p>
           </div>
         </article>
 
       </div>
+
+      <div class="hall-floor-beam"></div>
     </section>
 
   </main>
