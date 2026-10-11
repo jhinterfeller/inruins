@@ -206,7 +206,7 @@ body.museum-body {
 
 /* Floor Ceiling / Lintel Beam */
 .hall-ceiling {
-  background: linear-gradient(180deg, #151515 0%, #4A412A 100%);
+  background: linear-gradient(180deg, 6E6A5B 0%, #4A412A 100%);
   border-top: 3px solid #222;
   border-bottom: 1px solid #1f1f1f;
   padding: 1rem 2rem;
