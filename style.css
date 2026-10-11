@@ -321,7 +321,7 @@ body.museum-body {
   z-index: 3;
 }
 .plane-fg .exhibit-frame img {
-  height: 210px;
+  height: 2200px;
   filter: brightness(92%) contrast(108%);
 }
 .plane-fg h3 { font-size: 1.15rem; }
