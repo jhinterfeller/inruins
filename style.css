@@ -239,7 +239,7 @@ body.museum-body {
 
 .hall-floor-beam {
   height: 16px;
-  background: linear-gradient(180deg, #020202 0%, #161616 50%, #050505 100%);
+  background: linear-gradient(180deg, #444955 0%, #313e5c 50%, #1f3361 100%);
   border-top: 1px solid #222;
   border-bottom: 2px solid #000;
 }
