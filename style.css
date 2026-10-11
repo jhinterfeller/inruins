@@ -182,7 +182,7 @@ body.museum-body {
   margin: 0;
   padding: 0;
   /* Atmospheric room lighting gradient from top-center */
-  background-image: radial-gradient(circle at 50% 10%, #1c1c1c 0%, #080808 60%, #000000 100%);
+  background-image: radial-gradient(circle at 50% 10%, #a29370 0%, #080808 60%, #000000 100%);
   background-attachment: fixed;
 }
 
