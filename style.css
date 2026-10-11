@@ -173,54 +173,52 @@ section.quote .author {
 }
 .footer-tiny a { text-decoration: none; color: inherit; }
 /* ==========================================================================
-   ATMOSPHERIC MUSEUM ROOM & PERSPECTIVE
+   IMMERSIVE FULL-WIDTH MUSEUM ROOM STYLING
    ========================================================================== */
 
-/* Dark, continuous room background with edge vignette */
 body.museum-body {
-  background-color: #0d0d0d;
+  background-color: #0b0b0b;
   color: #e0e0e0;
-  background-image: 
-    radial-gradient(ellipse at 50% 20%, #222222 0%, #0a0a0a 70%, #000000 100%);
-  background-attachment: fixed;
   margin: 0;
   padding: 0;
+  /* Atmospheric room lighting gradient from top-center */
+  background-image: radial-gradient(circle at 50% 10%, #1c1c1c 0%, #080808 60%, #000000 100%);
+  background-attachment: fixed;
 }
 
 .museum-hero {
   text-align: center;
-  padding: 3rem 1rem 1rem 1rem;
+  padding: 2.5rem 1rem 1rem 1rem;
   border-bottom: 1px solid #1a1a1a;
+  background: rgba(10, 10, 10, 0.8);
 }
 
-/* Skyscraper Hall Main Area */
 .museum-hall {
   width: 100%;
-  max-width: 100%;
+  margin: 0;
   padding: 0;
-  margin: 0 auto;
 }
 
-/* Floor Structure */
 .museum-floor {
   position: relative;
-  padding: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
-/* Architectural Ceiling / Beams separating floors */
+/* Floor Ceiling / Lintel Beam */
 .hall-ceiling {
-  background: linear-gradient(180deg, #181818 0%, #0d0d0d 100%);
-  border-top: 4px solid #2a2a2a;
-  border-bottom: 1px solid #222;
-  padding: 1rem 3rem;
-  box-shadow: inset 0 -5px 15px rgba(0,0,0,0.8);
+  background: linear-gradient(180deg, #151515 0%, #0a0a0a 100%);
+  border-top: 3px solid #222;
+  border-bottom: 1px solid #1f1f1f;
+  padding: 1rem 2rem;
+  box-shadow: inset 0 -8px 20px rgba(0,0,0,0.9);
 }
 
 .floor-title-plate {
   display: flex;
   align-items: baseline;
-  gap: 1rem;
+  gap: 1.2rem;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 .floor-num {
@@ -232,184 +230,171 @@ body.museum-body {
 
 .floor-title-plate h2 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 1px;
   color: #f0e6d2;
 }
 
 .hall-floor-beam {
-  height: 12px;
-  background: linear-gradient(180deg, #050505 0%, #1a1a1a 50%, #080808 100%);
-  border-top: 1px solid #252525;
+  height: 16px;
+  background: linear-gradient(180deg, #020202 0%, #161616 50%, #050505 100%);
+  border-top: 1px solid #222;
   border-bottom: 2px solid #000;
-  margin-top: 2rem;
 }
 
-/* The 5-Column Perspective Room (No Cards) */
+/* Edge-to-Edge 5-Column Room Perspective */
 .gallery-room {
   display: grid;
-  grid-template-columns: 1.2fr 0.85fr 1.1fr 0.85fr 1.2fr;
+  grid-template-columns: 1.1fr 0.9fr 1.2fr 0.9fr 1.1fr;
   gap: 1.5rem;
   align-items: center;
-  padding: 3rem 2rem;
-  position: relative;
-  /* Dark side gradients simulating giant foreground pillars cropping the view */
+  width: 100%;
+  padding: 2.5rem 1.5rem; /* Pushes outer columns right to the room edges */
+  box-sizing: border-box;
+  /* Atmospheric side-shadow gradients simulating walls/pillars closing in */
   background: linear-gradient(
-    90deg, 
-    rgba(0,0,0,0.85) 0%, 
-    rgba(15,15,15,0.2) 20%, 
-    rgba(25,25,25,0.0) 50%, 
-    rgba(15,15,15,0.2) 80%, 
-    rgba(0,0,0,0.85) 100%
+    90deg,
+    rgba(0,0,0,0.95) 0%,
+    rgba(12,12,12,0.4) 15%,
+    rgba(20,20,20,0.05) 50%,
+    rgba(12,12,12,0.4) 85%,
+    rgba(0,0,0,0.95) 100%
   );
 }
 
-/* Floating Exhibits (Plaques on Wall, no background boxes) */
+/* Base Exhibit Styling (No boxes, mounted directly on wall) */
 .exhibit {
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .plaque-no {
   font-size: 0.65rem;
   color: #666;
   font-family: monospace;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.25rem;
 }
 
-/* Framing & Wall Hanging */
 .exhibit-frame {
   display: block;
   text-decoration: none;
-  border: 1px solid #2a2a2a;
+  border: 1px solid #282828;
   background: #000;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.8);
   overflow: hidden;
 }
 
+/* Fixed Proper Proportions for Gallery Art (Not stretched banners) */
 .exhibit-frame img {
   width: 100%;
+  height: 190px;
   display: block;
   object-fit: cover;
-  transition: transform 0.5s ease, filter 0.5s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-/* Direct Text Wall Plaques */
 .exhibit-plaque {
-  padding-top: 0.75rem;
+  padding-top: 0.6rem;
 }
 
 .exhibit-plaque h3 {
-  margin: 0 0 0.3rem 0;
-  color: #e5d3b3;
+  margin: 0 0 0.25rem 0;
+  color: #e2d1b0;
   font-weight: 400;
 }
 
 .exhibit-plaque p {
   margin: 0;
-  color: #999;
+  color: #8c8c8c;
   line-height: 1.35;
 }
 
 /* ==========================================================================
-   DEPTH LAYER STYLING
+   DEPTH LAYERS (Foreground, Midground, Background)
    ========================================================================== */
 
-/* Plane 1: FOREGROUND PILLARS (Columns 1 & 5) */
+/* Outer Foreground Pillars (Cols 1 & 5) */
 .plane-fg {
   z-index: 3;
-  transform: translateY(0);
 }
-
 .plane-fg .exhibit-frame img {
-  height: 220px;
-  filter: brightness(90%) contrast(110%);
+  height: 210px;
+  filter: brightness(92%) contrast(108%);
 }
+.plane-fg h3 { font-size: 1.15rem; }
+.plane-fg p { font-size: 0.85rem; color: #b5b5b5; }
 
-.plane-fg h3 { font-size: 1.2rem; }
-.plane-fg p { font-size: 0.88rem; color: #bbb; }
-
-/* Plane 2: MIDGROUND CENTER (Column 3) */
+/* Midground Center (Col 3) */
 .plane-mg {
   z-index: 2;
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
-
 .plane-mg .exhibit-frame img {
-  height: 190px;
-  filter: brightness(100%) contrast(105%);
+  height: 195px;
+  filter: brightness(100%) contrast(102%);
 }
+.plane-mg h3 { font-size: 1.05rem; }
+.plane-mg p { font-size: 0.8rem; }
 
-.plane-mg h3 { font-size: 1.1rem; }
-.plane-mg p { font-size: 0.82rem; }
-
-/* Plane 3: BACKGROUND DEEP VISTAS (Columns 2 & 4) */
+/* Background Recessed Alcoves (Cols 2 & 4 - Smaller with High-Contrast Spotlight) */
 .plane-bg {
   z-index: 1;
-  transform: scale(0.85);
+  transform: scale(0.88);
   opacity: 0.85;
 }
-
 .plane-bg .exhibit-frame img {
-  height: 140px;
+  height: 150px;
 }
-
-/* Small Deep-Alcove High Contrast Accent */
 .spotlight-frame {
   border: 1px solid #8c7247;
-  box-shadow: 0 0 12px rgba(140, 114, 71, 0.25);
+  box-shadow: 0 0 14px rgba(140, 114, 71, 0.3);
 }
-
 .spotlight-frame img {
-  filter: brightness(115%) contrast(125%);
+  filter: brightness(115%) contrast(120%);
 }
-
 .plane-bg h3 { 
   font-size: 0.85rem; 
-  color: #d8c29d;
+  color: #d1b88e; 
 }
-
 .plane-bg p { 
   font-size: 0.72rem; 
-  color: #888; 
+  color: #777; 
 }
 
-/* Interactive Hover - Stepping Closer to the Wall */
+/* Hover Interaction: Stepping closer */
 .exhibit:hover {
   z-index: 10;
-  transform: scale(1.04) translateY(-4px);
+  transform: scale(1.03) translateY(-3px);
   opacity: 1;
 }
 
 .exhibit:hover .exhibit-frame {
   border-color: #cda86b;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.9);
+  box-shadow: 0 18px 32px rgba(0,0,0,0.95);
 }
 
 .exhibit:hover .exhibit-frame img {
   filter: brightness(110%) contrast(110%);
 }
 
-/* Responsive collapse for tablets & mobile */
-@media (max-width: 900px) {
+/* Responsive view for mobile/smaller screens */
+@media (max-width: 950px) {
   .gallery-room {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 2rem 1rem;
     background: none;
   }
-  
   .plane-fg, .plane-mg, .plane-bg {
     transform: none;
     opacity: 1;
   }
-  
   .plane-fg .exhibit-frame img,
   .plane-mg .exhibit-frame img,
   .plane-bg .exhibit-frame img {
-    height: 200px;
+    height: 190px;
   }
 }
