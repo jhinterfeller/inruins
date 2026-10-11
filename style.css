@@ -250,7 +250,7 @@ body.museum-body {
   gap: 1.5rem;
   align-items: center;
   width: 100%;
-  padding: 2.5rem 1.5rem; /* Pushes outer columns right to the room edges */
+  padding: 1.5rem 0.5rem; /* Pushes outer columns right to the room edges */
   box-sizing: border-box;
   /* Atmospheric side-shadow gradients simulating walls/pillars closing in */
   background: linear-gradient(
