@@ -295,7 +295,7 @@ body.museum-body {
   height: 190px;
   display: block;
   object-fit: cover;
-  object-position: center bottom;
+
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
