@@ -2,41 +2,191 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Photographs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photographs — Visual Archive</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Clean, unboxed gallery layout */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 36px 24px;
-      align-items: start;
+    /* ==========================================================================
+       ARTISTIC EDITORIAL GALLERY (GOLDEN RHYTHM)
+       ========================================================================== */
+    
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0 80px 0;
     }
 
-    .photo-grid figure {
+    /* Asymmetrical Editorial Grid Layouts */
+    .gallery-row {
+      display: grid;
+      gap: 40px 28px;
+      margin-bottom: 56px;
+      align-items: end;
+    }
+
+    /* Pattern 1: Monolithic Hero Frame (Fibonacci Focal) */
+    .gallery-row.hero-frame {
+      grid-template-columns: 1fr;
+    }
+    .gallery-row.hero-frame figure {
+      max-width: 100%;
+    }
+
+    /* Pattern 2: Golden Asymmetry (Wide + Tall / 1.618 Proportion Split) */
+    .gallery-row.golden-split {
+      grid-template-columns: 1.618fr 1fr;
+    }
+
+    /* Pattern 3: Inverted Golden Split */
+    .gallery-row.golden-split-reverse {
+      grid-template-columns: 1fr 1.618fr;
+    }
+
+    /* Pattern 4: Triptych Vignette (3 Columns) */
+    .gallery-row.triptych {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* Figure & Image Styling */
+    .gallery-row figure {
       margin: 0;
       padding: 0;
-      border: none;
-      background: transparent;
+      position: relative;
+      overflow: hidden;
+      background: #f4f4f4;
     }
 
-    /* Entire photo displays naturally without cropping or background frames */
-    .photo-grid img {
+    .gallery-row figure a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-row img {
       width: 100%;
       height: auto;
       display: block;
-      border: 1px solid rgba(0, 0, 0, 0.15); /* Subtle dark border matching newspaper aesthetic */
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      vertical-align: bottom;
     }
 
-    .photo-grid figcaption {
-      margin-top: 10px;
+    /* Subtle Hover Zoom & Depth Effect */
+    .gallery-row figure:hover img {
+      transform: scale(1.025);
+      border-color: rgba(0, 0, 0, 0.35);
+    }
+
+    /* Editorial Caption Typography */
+    .gallery-row figcaption {
+      margin-top: 14px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      line-height: 1.5;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 8px;
+    }
+
+    .gallery-row figcaption .plate-no {
+      font-family: Georgia, serif;
+      font-style: italic;
+      letter-spacing: 0;
+      opacity: 0.6;
+      text-transform: none;
+    }
+
+    /* Divider & Section Spacing */
+    .editorial-divider {
+      text-align: center;
+      margin: 80px 0;
+      position: relative;
+    }
+    .editorial-divider::before {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: #000;
+      margin: 0 auto 16px auto;
+      opacity: 0.25;
+    }
+    .editorial-divider span {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* CSS-Only Lightbox Modal (:target) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 82vh;
+      object-fit: contain;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 30px;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      opacity: 0.75;
-      line-height: 1.4;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      color: #fff;
+      font-size: 32px;
+      text-decoration: none;
+      font-weight: 300;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
+    /* Responsive Adaptation for Mobile */
+    @media (max-width: 768px) {
+      .gallery-row.golden-split,
+      .gallery-row.golden-split-reverse,
+      .gallery-row.triptych {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
     }
   </style>
 </head>
@@ -48,7 +198,7 @@
     <div class="navlinks">
       <a href="travel.html">Travel</a>
       <a href="history.html">History</a>
-      <a href="photographs.html">Photos</a>
+      <a href="photographs.html" class="active">Photos</a>
       <a href="fieldnotes.html">Field Notes</a>
       <a href="backporch.html">Back Porch</a>
       <a href="ride.html">Ride</a>
@@ -58,46 +208,113 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="kicker">03 / Photographs</div>
-    <h1>The visual archive.</h1>
-    <p>have a moment.</p>
+    <div class="kicker">03 / Visual Archive</div>
+    <h1>Plates & Perspectives.</h1>
+    <p>A selective record of light, stone, and silent spaces.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap">
-    <div class="photo-grid">
-      <figure>
-        <img src="images/cenote_res.webp" alt="Blue water inside a limestone cave">
-        <figcaption>Cenote · field photograph · J. Hinterfeller</figcaption>
-      </figure>
+  <div class="wrap gallery-container">
 
+    <!-- Hero / Anchor Frame -->
+    <div class="gallery-row hero-frame">
       <figure>
-        <img src="images/zzsgate_result.webp" alt="Gate with cannons">
-        <figcaption>Gate · J. Hinterfeller</figcaption>
-      </figure>
-
-      <figure>
-        <img src="images/itzapnk.webp" alt="Chichen Itza at Night Yucatan Mexico">
-        <figcaption>Chichen Itza At Night</figcaption>
-      </figure>
-
-      <figure>
-        <img src="images/Yaxuna.webp" alt="Yaxuna Mayan Ruins">
-        <figcaption>Yaxuna Maya Ruins Yucatan Mexico</figcaption>
-      </figure>
-
-      <figure>
-        <img src="images/naga.webp" alt="The Naga King Guarding the Pearl Buddha">
-        <figcaption>The Naga King Guarding The Pearl Buddha overlooking the Mekong River Mukdahan Thailand</figcaption>
+        <a href="#img-naga">
+          <img src="images/naga.webp" alt="The Naga King Guarding the Pearl Buddha">
+        </a>
+        <figcaption>
+          <span>The Naga King Guarding The Pearl Buddha · Mukdahan, Thailand</span>
+          <span class="plate-no">Plate I</span>
+        </figcaption>
       </figure>
     </div>
 
-    <div class="rule"></div>
-    <p>As the archive grows, each photograph can connect to the story behind it.</p>
-    <a class="btn" href="photographs.html">Photography</a>
+    <!-- Asymmetric Golden Ratio Pair -->
+    <div class="gallery-row golden-split">
+      <figure>
+        <a href="#img-cenote">
+          <img src="images/cenote_res.webp" alt="Blue water inside a limestone cave">
+        </a>
+        <figcaption>
+          <span>Subterranean Basin · Yucatan</span>
+          <span class="plate-no">Plate II</span>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="#img-gate">
+          <img src="images/zzsgate_result.webp" alt="Gate with cannons">
+        </a>
+        <figcaption>
+          <span>Fortress Gate & Cannons</span>
+          <span class="plate-no">Plate III</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="editorial-divider">
+      <span>— Section II: Nocturne & Relics —</span>
+    </div>
+
+    <!-- Inverted Golden Pair -->
+    <div class="gallery-row golden-split-reverse">
+      <figure>
+        <a href="#img-yaxuna">
+          <img src="images/Yaxuna.webp" alt="Yaxuna Mayan Ruins">
+        </a>
+        <figcaption>
+          <span>Yaxuna Maya Citadel</span>
+          <span class="plate-no">Plate IV</span>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="#img-itza">
+          <img src="images/itzapnk.webp" alt="Chichen Itza at Night Yucatan Mexico">
+        </a>
+        <figcaption>
+          <span>Chichen Itza at Night</span>
+          <span class="plate-no">Plate V</span>
+        </figcaption>
+      </figure>
+    </div>
+
   </div>
 </section>
+
+<!-- ==========================================================================
+     LIGHTBOX MODALS (PURE CSS / NO JS)
+     ========================================================================== -->
+<div class="lightbox" id="img-naga">
+  <a href="#" class="lightbox-close">&times;</a>
+  <img src="images/naga.webp" alt="The Naga King Guarding the Pearl Buddha">
+  <div class="lightbox-caption">Plate I — The Naga King Guarding The Pearl Buddha · Mukdahan, Thailand</div>
+</div>
+
+<div class="lightbox" id="img-cenote">
+  <a href="#" class="lightbox-close">&times;</a>
+  <img src="images/cenote_res.webp" alt="Subterranean Basin">
+  <div class="lightbox-caption">Plate II — Subterranean Basin · Yucatan, Mexico</div>
+</div>
+
+<div class="lightbox" id="img-gate">
+  <a href="#" class="lightbox-close">&times;</a>
+  <img src="images/zzsgate_result.webp" alt="Fortress Gate">
+  <div class="lightbox-caption">Plate III — Fortress Gate & Cannons</div>
+</div>
+
+<div class="lightbox" id="img-yaxuna">
+  <a href="#" class="lightbox-close">&times;</a>
+  <img src="images/Yaxuna.webp" alt="Yaxuna Ruins">
+  <div class="lightbox-caption">Plate IV — Yaxuna Maya Citadel · Yucatan</div>
+</div>
+
+<div class="lightbox" id="img-itza">
+  <a href="#" class="lightbox-close">&times;</a>
+  <img src="images/itzapnk.webp" alt="Chichen Itza at Night">
+  <div class="lightbox-caption">Plate V — Chichen Itza at Night · Yucatan, Mexico</div>
+</div>
 
 <footer>
   <div class="footer-inner">
