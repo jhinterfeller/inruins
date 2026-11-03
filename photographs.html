@@ -1,174 +1,55 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photographs — Visual Archive</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  :root{--indigo:#1e3a7a;--gold:#C8A030;--line:rgba(0,0,0,0.08)}
-  *{box-sizing:border-box}
-  body{margin:0;background:#e3dac0;color:#111;font-family:"Cormorant Garamond",serif;-webkit-font-smoothing:antialiased}
-  
-  .site-header{padding:14px 20px;border-bottom:1px solid var(--line);background:#e3dac0;position:sticky;top:0;z-index:10}
-  .nav{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-  .brand{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;text-decoration:none;color:#000}
-  .navlinks{display:flex;gap:26px}
-  .navlinks a{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;color:#000;opacity:0.6}
-  .navlinks a.active,.navlinks a:hover{opacity:1;border-bottom:1px solid #000}
-  .page-hero{padding:80px 40px 40px 40px;max-width:1400px;margin:0 auto}
-  .kicker{font-family:"Inter",sans-serif;color:var(--gold);font-size:11px;letter-spacing:0.28em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
-  .page-hero h1{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:68px;line-height:0.95;margin:0 0 12px 0;font-weight:600;letter-spacing:-0.02em}
-  .page-hero p{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:30px;margin:0;opacity:0.9}
-  .section-gallery{max-width:1400px;margin:0 auto;padding:20px 40px 120px 40px;position:relative}
-  .spiral-svg{position:absolute;left:0;top:180px;width:100%;height:1600px;pointer-events:none;opacity:0.16;z-index:0}
-  .gallery-flow{position:relative;z-index:1;display:flex;flex-direction:column;gap:0}
-  /* === NEW: INFINITE GRID SYSTEM === */
-  .archive-grid{
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 28px 32px; /* row gap, col gap */
-    align-items: start;
-    margin-bottom:80px;
-  }
-  .archive-grid .gallery-item{
-    position:relative;
-    background:#e3dac0;
-    border:1px solid var(--line);
-    padding:0;
-    box-shadow:0 4px 24px rgba(0,0,0,0.04);
-    /* defaults you can override per plate */
-    grid-column: auto / span 4;
-  }
-  .archive-grid .gallery-item img{width:100%;height:auto;display:block}
-  
-  /* --- EDIT HERE: Position controls --- */
-  /* I + IV side-by-side example where IV's center sits below I's bottom */
-  .plate-I{ grid-column: 1 / span 7; grid-row: 1; transform:rotate(-0.6deg); z-index:2; }
-  .plate-IVa{ grid-column: 8 / span 5; grid-row: 1; margin-top: 1px; transform:rotate(0.6deg); z-index:1; }
-  /* 280px pushes IV down so its middle is roughly under I's bottom. Increase to drop more, decrease to lift */
-    .plate-IVc{ grid-column: 8 / span 5; grid-row: 1.5; margin-top: 140px;transform:rotate(0.6deg); z-index:1; }
-  /* 280px pushes IV down so its middle is roughly under I's bottom. Increase to drop more, decrease to lift */
-  .plate-II{ grid-column: 16 / span 6; grid-row: 1; margin-top: 40px; transform:rotate(0.8deg); }
-  .plate-III{ grid-column: 2 / span 3; grid-row: 3; margin-top: -20px; transform:rotate(-0.4deg); }
-  /* Section II - continues same grid, just new row numbers */
-  .plate-IVb{ grid-column: 2 / span 4; grid-row: 1; transform:rotate(0.6deg); } /* was duplicate plate-IV */
-  .plate-V{ grid-column: 6 / span 7; grid-row: 1; margin-top: 120px; transform:rotate(-0.5deg); }
-  /* TEMPLATE for adding new plates indefinitely - copy/paste this */
-  /* .plate-VI{ grid-column: 1 / span 5; grid-row: 2; margin-top: 60px; transform:rotate(0.3deg); } */
-  /* .plate-VII{ grid-column: 7 / span 5; grid-row: 2; margin-top: 180px; transform:rotate(-0.4deg); } */
-  /* divider spans full width */
-  .editorial-divider{grid-column:1 / -1; display:flex;align-items:center;gap:16px;margin:60px 0 20px 0;}
-  .editorial-divider:before{content:"";width:60px;height:1px;background:#000;opacity:0.18;display:block}
-  .editorial-divider span{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:15px;color:#666}
-  figcaption{margin-top:14px;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:10px;padding-left:2px;padding-right:2px}
-  .caption-main{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:20px;line-height:1.2}
-  .plate-no{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--indigo);opacity:0.6;font-size:14px;white-space:nowrap}
-  .lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:40px}
-  .lightbox:target{display:flex;flex-direction:column}
-  .lightbox img{max-width:90vw;max-height:80vh;box-shadow:0 20px 60px rgba(0,0,0,0.18);border:1px solid var(--line)}
-  .lightbox-caption{margin-top:20px;font-family:"Dancing Script",cursive;color:var(--indigo);font-size:22px}
-  .lightbox-close{position:absolute;top:24px;right:32px;font-size:36px;text-decoration:none;color:#000;opacity:0.6}
-  .lightbox-close:hover{opacity:1}
-  footer{border-top:1px solid var(--line);padding:40px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-  .footer-brand{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600}
-  .small{font-family:"Cormorant Garamond",serif;font-style:italic;color:#555}
-  @media(max-width:768px){
-    .site-header{padding:20px}
-    .page-hero{padding:48px 20px 20px 20px}
-    .page-hero h1{font-size:48px}
-    .section-gallery{padding:10px 20px 80px 20px}
-    .spiral-svg{display:none}
-    .archive-grid{grid-template-columns:1fr; gap:32px}
-    .archive-grid .gallery-item{grid-column:1 / -1 !important; grid-row:auto !important; margin-top:0 !important; transform:none !important; width:92vw; margin-left:auto; margin-right:auto}
-    .editorial-divider{margin-left:0;justify-content:center}
-  }
-</style>
-</head>
-<body>
-<header class="site-header">
-  <nav class="nav">
-    <a class="brand" href="index.html">Amazing Finds</a>
-    <div class="navlinks">
-      <a href="travel.html">Travel</a>
-      <a href="history.html">History</a>
-      <a href="photographs.html" class="active">Photos</a>
-      <a href="fieldnotes.html">Field Notes</a>
-      <a href="backporch.html">Back Porch</a>
-      <a href="ride.html">Ride</a>
-    </div>
-  </nav>
-</header>
-<section class="page-hero">
-  <div class="kicker">03 / Visual Archive</div>
-  <h1>enjoy the journey</h1>
-  <p>the way by scroll</p>
-</section>
-<section class="section-gallery">
-  <svg class="spiral-svg" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M 80 40 C 400 20, 540 80, 640 140 C 760 210, 900 280, 940 420 C 980 580, 820 660, 640 620 C 440 570, 300 460, 360 320 C 420 180, 660 220, 780 320 C 900 420, 880 580, 740 700 C 600 820, 360 840, 120 760" stroke="#1e3a7a" stroke-width="1.2" stroke-dasharray="6 14" stroke-linecap="round"/>
-    <circle cx="80" cy="40" r="3.5" fill="#C8A030"/><circle cx="640" cy="140" r="2.5" fill="#1e3a7a"/><circle cx="940" cy="420" r="2.5" fill="#1e3a7a"/><circle cx="120" cy="760" r="3.5" fill="#C8A030"/>
-  </svg>
-  <div class="gallery-flow">
-    
-    <!-- SECTION I: Tight + now side-by-side -->
-    <div class="archive-grid">
-      <figure class="gallery-item plate-I">
-        <a href="#img-naga"><img src="images/naga.webp" alt="The Naga King Guarding the Pearl Buddha"></a>
-        <figcaption><span class="caption-main">The Naga King Guarding The Pearl Buddha · Mukdahan, Thailand</span><span class="plate-no">Plate I</span></figcaption>
-      </figure>
-      <!-- This is your IV that you wanted next to I, center under bottom -->
-      <figure class="gallery-item plate-IVa">
-        <a href="#img-drum"><img src="images/pchis.webp" alt="The Drum"></a>
-        <figcaption><span class="caption-main">The Monk's Drum, Phnom Chisor Cambodia</span><span class="plate-no">Plate IV</span></figcaption>
-      </figure>
-      <figure class="gallery-item plate-II">
-        <a href="#img-cenote"><img src="images/cenote_res.webp" alt="Blue water inside a limestone cave"></a>
-        <figcaption><span class="caption-main">Subterranean Basin · Yucatan</span><span class="plate-no">Plate II</span></figcaption>
-      </figure>
-      <figure class="gallery-item plate-IVc">
-        <a href="#snacks"><img src="images/snacks.jpg" alt=""></a>
-        <figcaption><span class="caption-main">Delicious Snacks</span><span class="plate-no">Plate VI</span></figcaption>
-      </figure>
-      <figure class="gallery-item plate-III">
-        <a href="#img-gate"><img src="images/zzsgate_result.webp" alt="Gate with cannons"></a>
-        <figcaption><span class="caption-main">Fortress Gate & Cannons</span><span class="plate-no">Plate III</span></figcaption>
-      </figure>
-    </div>
-    <div class="archive-grid">
-      <div class="editorial-divider"><span>— Section II: Nocturne & Relics —</span></div>
-    </div>
-    <!-- SECTION II: Gentle spiral - add as many as you want -->
-    <div class="archive-grid">
-      <figure class="gallery-item plate-IVb">
-        <a href="#img-yaxuna"><img src="images/Yaxuna.webp" alt="Yaxuna Mayan Ruins"></a>
-        <figcaption><span class="caption-main">Yaxuna Maya Citadel</span><span class="plate-no">Plate IV</span></figcaption>
-      </figure>
-      <figure class="gallery-item plate-V">
-        <a href="#img-itza"><img src="images/itzapnk.webp" alt="Chichen Itza at Night Yucatan Mexico"></a>
-        <figcaption><span class="caption-main">Chichen Itza at Night</span><span class="plate-no">Plate V</span></figcaption>
-      </figure>
-      <figure class="gallery-item plate-VI">
-        <a href="#freefall"><img src="images/freefallling.jpg" alt=""></a>
-        <figcaption><span class="caption-main">skydiving</span><span class="plate-no">Plate VI</span></figcaption>
-      </figure>
-      <!-- COPY FROM HERE TO ADD INFINITELY
-      <figure class="gallery-item plate-VI">
-        <a href="#img-new"><img src="images/new.webp" alt=""></a>
-        <figcaption><span class="caption-main">New caption</span><span class="plate-no">Plate VI</span></figcaption>
-      </figure>
-      -->
-    </div>
-  </div>
-</section>
-<div class="lightbox" id="img-naga"><a href="#" class="lightbox-close">×</a><img src="images/naga.webp" alt="The Naga King"><div class="lightbox-caption">Plate I — The Naga King Guarding The Pearl Buddha · Mukdahan, Thailand</div></div>
-<div class="lightbox" id="img-cenote"><a href="#" class="lightbox-close">×</a><img src="images/cenote_res.webp" alt="Cenote"><div class="lightbox-caption">Plate II — Subterranean Basin · Yucatan, Mexico</div></div>
-<div class="lightbox" id="img-gate"><a href="#" class="lightbox-close">×</a><img src="images/zzsgate_result.webp" alt="Gate"><div class="lightbox-caption">Plate III — Fortress Gate & Cannons</div></div>
-<div class="lightbox" id="img-yaxuna"><a href="#" class="lightbox-close">×</a><img src="images/Yaxuna.webp" alt="Yaxuna"><div class="lightbox-caption">Plate IV — Yaxuna Maya Citadel · Yucatan</div></div>
-<div class="lightbox" id="img-itza"><a href="#" class="lightbox-close">×</a><img src="images/itzapnk.webp" alt="Itza"><div class="lightbox-caption">Plate V — Chichen Itza at Night · Yucatan, Mexico</div></div>
-<footer>
-  <div class="footer-brand">THE TRAIL</div>
-  <div class="small">What you find without a plan.</div>
-</footer>
-</body>
-</html>
+/* THE WANDERING GRID */
+.archive-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 80px 28px;
+  position: relative;
+}
+
+/* default item */
+.gallery-item img{width:100%; height:auto; display:block; border:1px solid var(--line);}
+
+/* --- LAPTOP: 3 wide but sizes fluctuate --- */
+/* This creates your wandering - 6 patterns that repeat forever */
+
+.gallery-item:nth-child(6n+1){ grid-column: 1 / span 4; transform: rotate(-0.7deg); margin-top: 0; }
+.gallery-item:nth-child(6n+2){ grid-column: 6 / span 3; transform: rotate(0.5deg); margin-top: 40px; }
+.gallery-item:nth-child(6n+3){ grid-column: 10 / span 3; transform: rotate(-0.4deg); margin-top: 90px; }
+
+.gallery-item:nth-child(6n+4){ grid-column: 2 / span 3; transform: rotate(0.6deg); margin-top: -20px; }
+.gallery-item:nth-child(6n+5){ grid-column: 6 / span 5; transform: rotate(-0.5deg); margin-top: 30px; } /* wide one */
+.gallery-item:nth-child(6n+6){ grid-column: 9 / span 4; transform: rotate(0.8deg); margin-top: 10px; }
+
+/* --- SOFT BACKGROUND LINE - pulled spiral --- */
+.spiral-svg{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.35;
+}
+
+/* --- PHONE: 1 wide, same size --- */
+@media(max-width:768px){
+  .archive-grid{ grid-template-columns: 1fr; gap: 36px; }
+  .gallery-item{ grid-column: 1 / -1 !important; transform: none !important; margin-top: 0 !important; }
+  .gallery-item{ width: 92vw; margin-left: auto; margin-right: auto; }
+  .spiral-svg{ display: none; } /* too busy on phone */
+}
+<svg class="spiral-svg" viewBox="0 0 1200 3000" preserveAspectRatio="none">
+  <path d="M 200 0 C 800 150, 100 350, 900 500 C 1100 700, 200 900, 300 1150 C 400 1400, 1000 1550, 200 1800 C 900 2100, 100 2350, 800 2700" 
+  stroke="#1e3a7a" stroke-width="1.2" stroke-dasharray="6 14" fill="none" stroke-linecap="round"/>
+</svg>
+<div class="archive-grid">
+  <figure class="gallery-item">
+    <a href="#img1"><img src="images/naga.webp" loading="lazy"></a>
+    <figcaption><span class="caption-main">The Naga King...</span><span class="plate-no">01</span></figcaption>
+  </figure>
+  <!-- just copy/paste this block - no classes needed -->
+  <figure class="gallery-item">
+    <a href="#img2"><img src="images/pchis.webp" loading="lazy"></a>
+    <figcaption><span class="caption-main">The Monk's Drum</span><span class="plate-no">02</span></figcaption>
+  </figure>
+  <!-- ... 300 times -->
+</div>
