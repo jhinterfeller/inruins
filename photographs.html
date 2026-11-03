@@ -1,4 +1,3 @@
-hs Fixed
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,59 +8,50 @@ hs Fixed
 <style>
   :root{--indigo:#1e3a7a;--gold:#C8A030;--line:rgba(0,0,0,0.08)}
   *{box-sizing:border-box}
-  body{margin:0;background:#e3dac0;color:#111;font-family:"Cormorant Garamond",serif;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:#e3dac0;color:#111;font-family:"Cormorant Garamond",serif}
   .site-header{padding:14px 20px;border-bottom:1px solid var(--line);background:#e3dac0;position:sticky;top:0;z-index:10}
   .nav{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
   .brand{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;text-decoration:none;color:#000}
   .navlinks{display:flex;gap:26px}
   .navlinks a{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;color:#000;opacity:0.6}
   .navlinks a.active,.navlinks a:hover{opacity:1;border-bottom:1px solid #000}
-  .page-hero{padding:80px 40px 40px 40px;max-width:1400px;margin:0 auto}
+  .page-hero{padding:80px 40px 20px 40px;max-width:1400px;margin:0 auto}
   .kicker{font-family:"Inter",sans-serif;color:var(--gold);font-size:11px;letter-spacing:0.28em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
-  .page-hero h1{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:68px;line-height:0.95;margin:0 0 12px 0;font-weight:600;letter-spacing:-0.02em}
-  .page-hero p{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:30px;margin:0;opacity:0.9}
-  .section-gallery{max-width:1400px;margin:0 auto;padding:20px 40px 120px 40px;position:relative}
-  .spiral-svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:0.16;z-index:0}
-  .gallery-flow{position:relative;z-index:1}
-  /* === FIXED: ONE GRID THAT WANDERS FOR 200 PHOTOS === */
-  .archive-grid{
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 80px 28px;
-    align-items: start;
-  }
-  .archive-grid .gallery-item{
+  .page-hero h1{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:68px;margin:0 0 8px 0;font-weight:600}
+  .page-hero p{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:26px;margin:0;opacity:0.9}
+  .hint{max-width:1400px;margin:0 auto;padding:0 40px 20px 40px;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:0.05em;opacity:0.5}
+  
+  /* === THE PLANE === */
+  .section-gallery{max-width:1400px;margin:0 auto;padding:0 40px 80px 40px;position:relative}
+  .wandering-plane{
     position:relative;
+    width:100%;
+    height:4200px; /* grow this as you add 200 photos: ~20px per photo */
+    /* soft background */
+  }
+  .spiral-svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:0.16;z-index:0}
+  
+  .gallery-item{
+    position:absolute;
     background:#e3dac0;
     border:1px solid var(--line);
-    box-shadow:0 4px 24px rgba(0,0,0,0.04);
+    box-shadow:0 4px 24px rgba(0,0,0,0.05);
+    padding:0;
+    z-index:1;
   }
-  .archive-grid .gallery-item img{width:100%;height:auto;display:block}
-  /* 3 wide on laptop, sizes fluctuate - auto, no plate classes needed */
-  .gallery-item:nth-child(3n+1){ grid-column: 1 / span 4; transform: rotate(-0.6deg); }
-  .gallery-item:nth-child(3n+2){ grid-column: 6 / span 3; transform: rotate(0.6deg); margin-top: 40px; }
-  .gallery-item:nth-child(3n+3){ grid-column: 10 / span 3; transform: rotate(-0.4deg); margin-top: 80px; }
-  /* every 5th one gets a little wider for variety */
-  .gallery-item:nth-child(5n){ grid-column: 6 / span 5; }
-  figcaption{margin-top:14px;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:10px;padding-left:2px;padding-right:2px}
-  .caption-main{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:20px;line-height:1.2}
-  .plate-no{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--indigo);opacity:0.6;font-size:14px;white-space:nowrap}
-  .lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:40px}
-  .lightbox:target{display:flex;flex-direction:column}
-  .lightbox img{max-width:90vw;max-height:80vh;box-shadow:0 20px 60px rgba(0,0,0,0.18);border:1px solid var(--line)}
-  .lightbox-caption{margin-top:20px;font-family:"Dancing Script",cursive;color:var(--indigo);font-size:22px}
-  .lightbox-close{position:absolute;top:24px;right:32px;font-size:36px;text-decoration:none;color:#000;opacity:0.6}
+  .gallery-item img{width:100%;height:auto;display:block}
+  figcaption{margin-top:10px;display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:8px}
+  .caption-main{font-family:"Dancing Script",cursive;color:var(--indigo);font-size:18px;line-height:1.2}
+  .plate-no{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--indigo);opacity:0.5;font-size:13px}
   footer{border-top:1px solid var(--line);padding:40px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
   .footer-brand{font-family:"Inter",sans-serif;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600}
   .small{font-family:"Cormorant Garamond",serif;font-style:italic;color:#555}
+  /* PHONE: plane becomes a normal list */
   @media(max-width:768px){
-    .site-header{padding:20px}
-    .page-hero{padding:48px 20px 20px 20px}
-    .page-hero h1{font-size:48px}
     .section-gallery{padding:10px 20px 80px 20px}
+    .wandering-plane{height:auto !important;display:flex;flex-direction:column;gap:36px}
     .spiral-svg{display:none}
-    .archive-grid{grid-template-columns:1fr; gap:32px}
-    .archive-grid .gallery-item{grid-column:1 / -1 !important; margin-top:0 !important; transform:none !important; width:92vw; margin-left:auto; margin-right:auto}
+    .gallery-item{position:relative !important;left:auto !important;top:auto !important;width:92vw !important;margin:0 auto !important;transform:none !important}
   }
 </style>
 </head>
@@ -85,61 +75,51 @@ hs Fixed
   <p>the way by scroll</p>
 </section>
 <section class="section-gallery">
-  <!-- PULLED SLINKY - soft background line -->
   <svg class="spiral-svg" viewBox="0 0 1200 12000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M 200 0 C 900 300, 100 600, 900 1000 C 100 1400, 1000 2000, 200 2600 C 900 3200, 100 4000, 800 5000 C 200 6000, 1000 7000, 200 8200 C 900 9500, 100 10800, 600 12000" stroke="#1e3a7a" stroke-width="1.2" stroke-dasharray="6 14" fill="none" stroke-linecap="round"/>
+    <path d="M 180 0 C 900 300, 100 700, 900 1100 C 100 1600, 1000 2200, 200 2800 C 900 3500, 100 4300, 800 5200 C 200 6200, 1000 7200, 200 8400 C 900 9600, 100 10800, 600 12000" stroke="#1e3a7a" stroke-width="1.2" stroke-dasharray="6 14" fill="none" stroke-linecap="round"/>
   </svg>
-  <div class="gallery-flow">
-    <div class="archive-grid">
-      <figure class="gallery-item">
-        <a href="#img-naga"><img src="images/naga.webp" alt="The Naga King Guarding the Pearl Buddha" loading="lazy"></a>
-        <figcaption><span class="caption-main">The Naga King Guarding The Pearl Buddha · Mukdahan, Thailand</span><span class="plate-no">01</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <a href="#img-drum"><img src="images/pchis.webp" alt="The Drum" loading="lazy"></a>
-        <figcaption><span class="caption-main">The Monk's Drum, Phnom Chisor Cambodia</span><span class="plate-no">02</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <a href="#img-cenote"><img src="images/cenote_res.webp" alt="Blue water inside a limestone cave" loading="lazy"></a>
-        <figcaption><span class="caption-main">Subterranean Basin · Yucatan</span><span class="plate-no">03</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <a href="#img-gate"><img src="images/zzsgate_result.webp" alt="Gate with cannons" loading="lazy"></a>
-        <figcaption><span class="caption-main">Fortress Gate & Cannons</span><span class="plate-no">04</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <a href="#img-yaxuna"><img src="images/Yaxuna.webp" alt="Yaxuna Mayan Ruins" loading="lazy"></a>
-        <figcaption><span class="caption-main">Yaxuna Maya Citadel</span><span class="plate-no">05</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <a href="#img-itza"><img src="images/itzapnk.webp" alt="Chichen Itza at Night" loading="lazy"></a>
-        <figcaption><span class="caption-main">Chichen Itza at Night</span><span class="plate-no">06</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <a href="#img-snacks"><img src="images/snacks.jpg" alt="Snacks" loading="lazy"></a>
-        <figcaption><span class="caption-main">Delicious Snacks</span><span class="plate-no">07</span></figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <a href="#img-freefall"><img src="images/freefallling.jpg" alt="Skydiving" loading="lazy"></a>
-        <figcaption><span class="caption-main">skydiving</span><span class="plate-no">08</span></figcaption>
-      </figure>
-      <!-- COPY THIS TO ADD 200 PHOTOS - NO CSS NEEDED
-      <figure class="gallery-item">
-        <a href="#img-09"><img src="images/your-new-file.webp" alt="" loading="lazy"></a>
-        <figcaption><span class="caption-main">Your caption</span><span class="plate-no">09</span></figcaption>
-      </figure>
-      -->
-    </div>
+  <div class="wandering-plane" id="plane">
+    <!-- YOUR 8 STARTERS - drag them anywhere, then copy the left/top it logs -->
+    <figure class="gallery-item" style="left:2%; top:0.5%; width:460px; transform:rotate(-0.6deg);">
+      <img src="images/naga.webp" loading="lazy" alt="Naga King">
+      <figcaption><span class="caption-main">Naga King · Mukdahan, Thailand</span><span class="plate-no">01</span></figcaption>
+    </figure>
+    <figure class="gallery-item" style="left:42%; top:1.2%; width:300px; transform:rotate(0.6deg);">
+      <img src="images/pchis.webp" loading="lazy" alt="Monk Drum">
+      <figcaption><span class="caption-main">Monk's Drum, Phnom Chisor Cambodia</span><span class="plate-no">02</span></figcaption>
+    </figure>
+    <figure class="gallery-item" style="left:68%; top:2.5%; width:320px; transform:rotate(0.8deg);">
+      <img src="images/cenote_res.webp" loading="lazy" alt="Cenote">
+      <figcaption><span class="caption-main">Subterranean Basin · Yucatan</span><span class="plate-no">03</span></figcaption>
+    </figure>
+    <figure class="gallery-item" style="left:5%; top:14%; width:340px; transform:rotate(-0.4deg);">
+      <img src="images/zzsgate_result.webp" loading="lazy" alt="Gate">
+      <figcaption><span class="caption-main">Fortress Gate & Cannons</span><span class="plate-no">04</span></figcaption>
+    </figure>
+    <figure class="gallery-item" style="left:36%; top:15%; width:260px; transform:rotate(0.5deg);">
+      <img src="images/Yaxuna.webp" loading="lazy" alt="Yaxuna">
+      <figcaption><span class="caption-main">Yaxuna Maya Citadel</span><span class="plate-no">05</span></figcaption>
+    </figure>
+    <figure class="gallery-item" style="left:60%; top:18%; width:420px; transform:rotate(-0.5deg);">
+      <img src="images/itzapnk.webp" loading="lazy" alt="Itza">
+      <figcaption><span class="caption-main">Chichen Itza at Night</span><span class="plate-no">06</span></figcaption>
+    </figure>
+    <figure class="gallery-item" style="left:8%; top:28%; width:300px; transform:rotate(0.4deg);">
+      <img src="images/snacks.jpg" loading="lazy" alt="Snacks">
+      <figcaption><span class="caption-main">Delicious Snacks</span><span class="plate-no">07</span></figcaption>
+    </figure>
+    <figure class="gallery-item" style="left:45%; top:30%; width:360px; transform:rotate(-0.3deg);">
+      <img src="images/freefallling.jpg" loading="lazy" alt="Skydiving">
+      <figcaption><span class="caption-main">skydiving</span><span class="plate-no">08</span></figcaption>
+    </figure>
+    <!-- ADD 200 MORE - COPY THIS
+    <figure class="gallery-item" style="left:20%; top:40%; width:320px; transform:rotate(0.5deg);">
+      <img src="images/your-file.webp" loading="lazy" alt="">
+      <figcaption><span class="caption-main">Your caption</span><span class="plate-no">09</span></figcaption>
+    </figure>
+    -->
   </div>
 </section>
-<div class="lightbox" id="img-naga"><a href="#" class="lightbox-close">×</a><img src="images/naga.webp" alt=""><div class="lightbox-caption">The Naga King Guarding The Pearl Buddha</div></div>
-<div class="lightbox" id="img-drum"><a href="#" class="lightbox-close">×</a><img src="images/pchis.webp" alt=""><div class="lightbox-caption">The Monk's Drum</div></div>
-<div class="lightbox" id="img-cenote"><a href="#" class="lightbox-close">×</a><img src="images/cenote_res.webp" alt=""><div class="lightbox-caption">Subterranean Basin</div></div>
-<div class="lightbox" id="img-gate"><a href="#" class="lightbox-close">×</a><img src="images/zzsgate_result.webp" alt=""><div class="lightbox-caption">Fortress Gate</div></div>
-<div class="lightbox" id="img-yaxuna"><a href="#" class="lightbox-close">×</a><img src="images/Yaxuna.webp" alt=""><div class="lightbox-caption">Yaxuna</div></div>
-<div class="lightbox" id="img-itza"><a href="#" class="lightbox-close">×</a><img src="images/itzapnk.webp" alt=""><div class="lightbox-caption">Chichen Itza at Night</div></div>
-<div class="lightbox" id="img-snacks"><a href="#" class="lightbox-close">×</a><img src="images/snacks.jpg" alt=""><div class="lightbox-caption">Delicious Snacks</div></div>
-<div class="lightbox" id="img-freefall"><a href="#" class="lightbox-close">×</a><img src="images/freefallling.jpg" alt=""><div class="lightbox-caption">skydiving</div></div>
 <footer>
   <div class="footer-brand">THE TRAIL</div>
   <div class="small">What you find without a plan.</div>
