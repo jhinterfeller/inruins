@@ -130,37 +130,61 @@
   <div class="small">What you find without a plan.</div>
 </footer>
 <script>
-// OPTIONAL HELPER: drag on desktop to find position, logs to console
-// Remove this script when you're done placing
-let dragEl=null, startX, startY, origLeft, origTop;
-document.querySelectorAll('.gallery-item').forEach(el=>{
-  el.style.cursor='grab';
-  el.addEventListener('mousedown', e=>{
-    if(window.innerWidth<769) return;
-    dragEl=el; dragEl.style.zIndex=10;
-    startX=e.clientX; startY=e.clientY;
-    const rect=el.getBoundingClientRect();
-    const planeRect=document.getElementById('plane').getBoundingClientRect();
-    origLeft= (rect.left-planeRect.left)/planeRect.width*100;
-    origTop= (rect.top-planeRect.top + window.scrollY - document.getElementById('plane').offsetTop)/planeRect.height*100;
-    dragEl.style.cursor='grabbing';
+// FIXED HELPER: drag on desktop to find position, logs to console
+// Remove when you're done
+let dragEl = null, startX, startY, origLeft, origTop;
+
+document.querySelectorAll('.gallery-item').forEach(el => {
+  el.style.cursor = 'grab';
+  el.style.position = 'absolute'; // make sure
+  
+  el.addEventListener('mousedown', e => {
+    if (window.innerWidth < 769) return;
+    
+    const plane = document.getElementById('plane');
+    const rect = el.getBoundingClientRect();
+    const planeRect = plane.getBoundingClientRect();
+    
+    dragEl = el;
+    dragEl.style.zIndex = 10;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    // Use the actual style value if it exists, otherwise calculate it
+    origLeft = parseFloat(el.style.left);
+    origTop = parseFloat(el.style.top);
+    
+    if (isNaN(origLeft)) {
+      origLeft = ((rect.left - planeRect.left) / planeRect.width) * 100;
+    }
+    if (isNaN(origTop)) {
+      origTop = ((rect.top - planeRect.top) / planeRect.height) * 100;
+    }
+
+    dragEl.style.cursor = 'grabbing';
     e.preventDefault();
   });
 });
-window.addEventListener('mousemove', e=>{
-  if(!dragEl) return;
-  const plane=document.getElementById('plane');
-  const dx=(e.clientX-startX)/plane.offsetWidth*100;
-  const dy=(e.clientY-startY)/plane.offsetHeight*100;
-  dragEl.style.left=(origLeft+dx)+'%';
-  dragEl.style.top=(origTop+dy)+'%';
+
+window.addEventListener('mousemove', e => {
+  if (!dragEl) return;
+  const plane = document.getElementById('plane');
+  
+  // use plane's size for both axes
+  const dx = ((e.clientX - startX) / plane.offsetWidth) * 100;
+  const dy = ((e.clientY - startY) / plane.offsetHeight) * 100;
+
+  dragEl.style.left = (origLeft + dx) + '%';
+  dragEl.style.top = (origTop + dy) + '%';
 });
-window.addEventListener('mouseup', e=>{
-  if(!dragEl) return;
-  console.log(dragEl.querySelector('img').src.split('/').pop() + ' -> left:' + dragEl.style.left + ' top:' + dragEl.style.top);
-  dragEl.style.zIndex=1;
-  dragEl.style.cursor='grab';
-  dragEl=null;
+
+window.addEventListener('mouseup', e => {
+  if (!dragEl) return;
+  const src = dragEl.querySelector('img')?.src.split('/').pop() || dragEl.id;
+  console.log(`${src} -> left: ${parseFloat(dragEl.style.left).toFixed(2)}% top: ${parseFloat(dragEl.style.top).toFixed(2)}%`);
+  dragEl.style.zIndex = 1;
+  dragEl.style.cursor = 'grab';
+  dragEl = null;
 });
 </script>
 </body>
