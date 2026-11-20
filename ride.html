@@ -7,7 +7,7 @@
 <style>
   /* RESET & BASE STYLES */
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  
+
   body {
     background-color: #ffffff;
     color: #111111;
@@ -152,10 +152,61 @@
     color: #222222;
     text-align: justify;
   }
-  
-  
 
-  /* SIDEBAR / TECH SPECS & FIELD NOTES (RIGHT) */
+  /* PHOTOGRAPHS */
+  .lead-photo {
+    margin: 0 0 28px;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 12px;
+  }
+  .lead-photo img {
+    display: block;
+    width: 100%;
+    height: clamp(260px, 42vw, 500px);
+    object-fit: cover;
+    object-position: center;
+  }
+  .photo-spread {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 14px;
+    margin: 28px 0 12px;
+    align-items: stretch;
+  }
+  .photo-spread figure,
+  .photo-strip figure {
+    min-width: 0;
+    margin: 0;
+  }
+  .photo-spread img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+    max-height: 340px;
+    object-fit: cover;
+  }
+  .photo-spread .detail-photo img {
+    min-height: 190px;
+    max-height: 340px;
+    object-position: center;
+  }
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 28px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid #111111;
+  }
+  .photo-strip img {
+    display: block;
+    width: 100%;
+    height: 145px;
+    object-fit: cover;
+  }
+
+  /* SIDEBAR */
   .sidebar-box {
     background: #ffffff;
     border: 1px solid #111111;
@@ -179,9 +230,7 @@
     border-bottom: 1px solid #eeeeee;
     padding: 14px 0;
   }
-  .spec-item:last-of-type {
-    border-bottom: none;
-  }
+  .spec-item:last-of-type { border-bottom: none; }
   .spec-item strong {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 11px;
@@ -197,7 +246,7 @@
     color: #333333;
   }
 
-  /* BUTTON STYLING */
+  /* BUTTON */
   .btn-biker {
     display: block;
     width: 100%;
@@ -258,6 +307,15 @@
   /* RESPONSIVE LAYOUT */
   @media(max-width: 800px) {
     .magazine-grid { grid-template-columns: 1fr; gap: 30px; }
+    .photo-strip { grid-template-columns: repeat(2, 1fr); }
+    .photo-strip img { height: 170px; }
+  }
+  @media(max-width: 520px) {
+    .photo-spread { grid-template-columns: 1fr; }
+    .photo-spread img,
+    .photo-spread .detail-photo img { height: 230px; min-height: 0; }
+    .lead-photo img { height: 280px; }
+    .navlinks a { margin-left: 2px; padding: 6px; }
   }
 </style>
 </head>
@@ -279,7 +337,6 @@
 
 <div class="wrap">
 
-  <!-- RIDE MASTHEAD HERO -->
   <section class="hero-mast">
     <div class="badge">Ride</div>
     <div class="kicker">The Ride — Vol. 1</div>
@@ -287,29 +344,44 @@
     <p>watch for wet leaves</p>
   </section>
 
-  <!-- MAGAZINE SPREAD GRID -->
   <div class="magazine-grid">
-    
-    <!-- MAIN STORY / CONTENT COLUMN -->
+
     <main class="main-feature">
       <div class="article-header">
         <h2>hmm, well... never seen that before</h2>
         <div class="subtext">Editorial Content &amp; Freedom on Two Wheels</div>
       </div>
 
+      <figure class="lead-photo">
+        <img src="images/chip_res.webp" alt="Custom motorcycles at a motorcycle gathering">
+      </figure>
+
       <div class="body-copy">
         <p>Cruising Isaan on the Honda 500x</p>
-        
-        <p>Explore the Yucatan Peninsula </p>
-        
+        <p>Explore the Yucatan Peninsula</p>
         <p>Say hi to the stage hill road crew</p>
+      </div>
+
+      <div class="photo-spread">
+        <figure>
+          <img src="images/bbike_res.webp" alt="Black touring motorcycle parked beside a bus">
+        </figure>
+        <figure class="detail-photo">
+          <img src="images/mech.webp" alt="Monkey sitting beneath a motorcycle">
+        </figure>
+      </div>
+
+      <div class="photo-strip">
+        <figure><img src="images/yax_res.webp" alt="Travel photograph"></figure>
+        <figure><img src="images/thai_res.webp" alt="Travel photograph"></figure>
+        <figure><img src="images/nnao.webp" alt="Travel photograph"></figure>
+        <figure><img src="images/mer.jpg" alt="Travel photograph"></figure>
       </div>
     </main>
 
-    <!-- SIDEBAR / SPECS / CONTACT BOX -->
     <aside class="sidebar-box">
       <h3>Trail Notes</h3>
-      
+
       <div class="spec-item">
         <strong>Look Ahead</strong>
         <span>Take it easy &amp; eyes where you are going</span>
@@ -334,10 +406,8 @@
     </aside>
 
   </div>
-
 </div>
 
-<!-- FULL-WIDTH CALLOUT QUOTE -->
 <section class="banner-quote">
   <div class="wrap">
     <blockquote>“LOOK MOM, NO HANDS!”</blockquote>
@@ -352,4 +422,3 @@
 
 </body>
 </html>
-
